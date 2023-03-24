@@ -1,0 +1,35 @@
+name: Algolia Search Release 
+on:
+  push:
+    tags:
+      - 'v*' # P
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Creating 'Release' Directory
+        run: mkdir -p release/functions
+      - name: Installing Packages for 'Algolia Search Bulk Index Handler' & Creating the Zip
+        run: cd functions/algolia_search_bulk_index_handler/ && npm install --omit=dev && zip -r ../../release/functions/algolia_search_bulk_index_handler.zip .
+      - name: Installing Packages for 'Algolia Search Integration' & Creating the Zip
+        run: cd functions/algolia_search_integration/ && npm install --omit=dev && zip -r ../../release/functions/algolia_search_integration.zip .
+      - name: Installing Packages for 'Algolia Search Record Handler' & Creating the Zip
+        run: cd functions/algolia_search_record_handler/ && npm install --omit=dev && zip -r ../../release/functions/algolia_search_record_handler.zip .
+      - name: Copy Project Template Json
+        run: cp project-template-1.0.0.json release/project-template-1.0.0.json
+      - name: Creating Zip of Release Folder
+        run: cd release && zip -r release.zip .
+
+      # - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: './release/release.zip'
+          bodyFile: 'README.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.RELEASE_VERSION }}

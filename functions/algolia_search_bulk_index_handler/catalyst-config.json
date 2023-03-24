@@ -1,0 +1,14 @@
+{
+	"deployment": {
+		"name": "algolia_search_bulk_index_handler",
+		"stack": "node16",
+		"type": "event",
+		"env_variables": {
+			"ALGOLIA_APP_ID": "Your Algolia App Id",
+			"ALGOLIA_APP_KEY": "Your Algolia App Key"
+		}
+	},
+	"execution": {
+		"main": "index.js"
+	}
+}

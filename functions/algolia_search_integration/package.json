@@ -1,0 +1,21 @@
+{
+	"name": "algolia_search_integration",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "support@zohocatalyst.com",
+	"dependencies": {
+		"algoliasearch": "^4.14.3",
+		"express": "^4.18.2",
+		"zcatalyst-sdk-node": "^2.3.0"
+	},
+	"scripts": {
+		"lint": "eslint --fix ."
+	},
+	"devDependencies": {
+		"eslint": "^8.36.0",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-n": "^15.6.1",
+		"eslint-plugin-promise": "^6.1.1"
+	}
+}

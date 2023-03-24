@@ -1,0 +1,15 @@
+{
+	"deployment": {
+		"name": "algolia_search_integration",
+		"stack": "node16",
+		"type": "advancedio",
+		"env_variables": {
+			"ALGOLIA_APP_ID": "Your Algolia App Id",
+			"ALGOLIA_APP_KEY": "Your Algolia App Key",
+			"CODELIB_SECRET_KEY": "CODELIB_FAKE_KEY"
+		}
+	},
+	"execution": {
+		"main": "index.js"
+	}
+}

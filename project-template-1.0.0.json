@@ -1,0 +1,116 @@
+{
+	"name": "project-template",
+	"version": "1.0.0",
+	"parameters": {},
+	"components": {
+		"Functions": [
+			{
+				"type": "function",
+				"name": "algolia_search_bulk_index_handler",
+				"properties": {
+					"stack": "node16",
+					"code": {
+						"path": "functions/algolia_search_bulk_index_handler.zip"
+					},
+					"configuration": {
+						"environment": {
+							"variables": {
+								"ALGOLIA_APP_ID": "Your Algolia App Id",
+								"ALGOLIA_APP_KEY": "Your Algolia App Key"
+							},
+							"last_updated_time": 1678432222168
+						},
+						"memory": 256
+					},
+					"type": "event",
+					"name": "algolia_search_bulk_index_handler"
+				},
+				"dependsOn": []
+			},
+			{
+				"type": "function",
+				"name": "algolia_search_record_handler",
+				"properties": {
+					"stack": "node16",
+					"code": {
+						"path": "functions/algolia_search_record_handler.zip"
+					},
+					"configuration": {
+						"environment": {
+							"variables": {
+								"ALGOLIA_APP_ID": "Your Algolia App Id",
+								"ALGOLIA_APP_KEY": "Your Algolia App Key"
+							},
+							"last_updated_time": 1678432222168
+						},
+						"memory": 256
+					},
+					"type": "event",
+					"name": "algolia_search_record_handler"
+				},
+				"dependsOn": []
+			},
+			{
+				"type": "function",
+				"name": "algolia_search_integration",
+				"properties": {
+					"stack": "node16",
+					"code": {
+						"path": "functions/algolia_search_integration.zip"
+					},
+					"configuration": {
+						"environment": {
+							"variables": {
+								"ALGOLIA_APP_ID": "Your Algolia App Id",
+								"ALGOLIA_APP_KEY": "Your Algolia App Key",
+								"CODELIB_SECRET_KEY": "CODELIB_FAKE_KEY"
+							},
+							"last_updated_time": 1678432264576
+						},
+						"memory": 256
+					},
+					"type": "applogic",
+					"name": "algolia_search_integration"
+				},
+				"dependsOn": []
+			}
+		],
+
+		"EventListeners": [
+			{
+				"type": "rules",
+				"name": "AlgoliaSearchBulkIndexHandler",
+				"properties": {
+					"listener_name": "Default",
+					"rule_name": "AlgoliaSearchBulkIndexHandler",
+					"description": "",
+					"source_type": "Cache",
+					"source": [
+						{
+							"entity_identifier": "Algolia"
+						}
+					],
+					"target": [
+						{
+							"entity_identifier": "algolia_search_bulk_index_handler",
+							"target_type": "Function"
+						}
+					],
+					"action": ["Put"],
+					"status": true
+				},
+				"dependsOn": ["Functions.function.algolia_search_bulk_index_handler"]
+			}
+		],
+		"Cache": [
+			{
+				"type": "segment",
+				"name": "Algolia",
+				"properties": {
+					"segment_name": "Algolia"
+				},
+				"dependsOn": []
+			}
+		]
+	}
+}
