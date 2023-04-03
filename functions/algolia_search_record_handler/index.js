@@ -24,16 +24,28 @@ module.exports = async (event, context) => {
 
       if (action === 'Delete') {
         if (Array.isArray(data)) {
-          index.deleteObjects(data.map((record) => record.ROWID))
+          await index.deleteObjects(data.map((record) => record.ROWID))
         } else {
-          index.deleteObject(data.ROWID)
+          await index.deleteObjects([data.ROWID])
         }
       } else {
-        index.saveObjects(data.map(record => ({
-          ...record,
-          objectID: record.ROWID
-        })))
+        await index.saveObjects(
+          data.map((record) => ({
+            ...record,
+            objectID: record.ROWID
+          }))
+        )
       }
+
+      const displayAction = action === 'Delete'
+        ? 'deleted'
+        : action === 'Insert'
+          ? 'inserted'
+          : 'updated'
+
+      console.log(`Records has been ${displayAction} in Algolia successfully. Total records ${displayAction} ::: ${Array.isArray(data) ? data.length : 1}`)
+    } else {
+      console.log("The generated event is not a 'Datastore' event.")
     }
 
     context.closeWithSuccess()
