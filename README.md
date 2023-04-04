@@ -31,20 +31,14 @@ In cases when you need to send only a single row and not the entire table data t
 
 The following Catalyst resources are auto-configured and used as a part of the Algolia Search Integration CodeLib.
 
-**1.[Catalyst Cloud Scale Data Store](https://catalyst.zoho.com/help/data-store.html)** :
+**1. [Catalyst Cloud Scale Data Store](https://catalyst.zoho.com/help/data-store.html)** : Catalyst Data Store table stores the application data which is to be sent to Algolia, to make it searchable. You can perform search in Algolia by passing the name of that table in the request payload while invoking the endpoints configured in the **algolia_search_integration** function.
 
-Catalyst Data Store table stores the application data which is to be sent to Algolia, to make it searchable. You can perform search in Algolia by passing the name of that table in the request payload while invoking the endpoints configured in the **algolia_search_integration** function.
-
-**2.[Catalyst Serverless Functions](https://catalyst.zoho.com/help/functions.html) :**
-
-The **algolia_search_integration([Advanced I/O function](https://catalyst.zoho.com/help/advancedio-functions.html))** handles the logic to be executed to while the user performs a search operation **(/search)** in the Catalyst application. Based on the search query entered, Algolia performs the search with the copy of your application's data and returns the response back to your application. It also contains the definitions of two other routes **/bulkIndex** and **/row** that can be used to index bulk data or a single data row respectively.
+**2. [Catalyst Serverless Functions](https://catalyst.zoho.com/help/functions.html) :** The **algolia_search_integration([Advanced I/O function](https://catalyst.zoho.com/help/advancedio-functions.html))** handles the logic to be executed to while the user performs a search operation **(/search)** in the Catalyst application. Based on the search query entered, Algolia performs the search with the copy of your application's data and returns the response back to your application. It also contains the definitions of two other routes **/bulkIndex** and **/row** that can be used to index bulk data or a single data row respectively.
 
 The **algolia_search_bulk_index_handler([Event function](https://catalyst.zoho.com/help/event-functions.html))** is automatically triggered whenever an entry is made in the cache segment (**Algolia**).  function contains the logic to convert the table data to JSON records and push them to Algolia.
 
 The **algolia_search_record_handler([Event function](https://catalyst.zoho.com/help/event-functions.html))** can be configured to execute whenever there is an addition, deletion or updation operation taking place in the Catalyst Data Store. This function handles the logic to maintain a sync between the data in the Data Store and the copy of data stored in the Algolia servers.
 
-**3.[Catalyst Cloud Scale Event Listener](https://catalyst.zoho.com/help/event-listeners.html) :**
+**3. [Catalyst Cloud Scale Event Listener](https://catalyst.zoho.com/help/event-listeners.html) :** We will be configuring two rules in the Catalyst Event Listener. Whenever an entry is being made in the cache segment (**Algolia**) one of the pre-configured event rules triggers the **algolia_search_bulk_index_handler** function automatically. You should configure another rule manually to check for any data updates being made in the Data Store table, which in turn invokes the **algolia_search_record_handler** function.
 
-We will be configuring two rules in the Catalyst Event Listener. Whenever an entry is being made in the cache segment (**Algolia**) one of the pre-configured event rules triggers the **algolia_search_bulk_index_handler** function automatically. You should configure another rule manually to check for any data updates being made in the Data Store table, which in turn invokes the **algolia_search_record_handler** function.
-
-**4.[Catalyst Cloud Scale Cache](https://catalyst.zoho.com/help/cache.html) :** The cache segment(**Algolia**) is used to store the Data Store table data and access them instantly.
+**4. [Catalyst Cloud Scale Cache](https://catalyst.zoho.com/help/cache.html) :** The cache segment(**Algolia**) is used to store the Data Store table data and access them instantly.
