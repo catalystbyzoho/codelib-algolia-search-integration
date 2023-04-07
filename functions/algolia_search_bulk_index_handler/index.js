@@ -46,6 +46,7 @@ module.exports = async (event, context) => {
       await index.saveObjects(records)
     }
     await segment.delete(data.cache_name)
+    console.log('Records has been inserted in Algolia. Total records inserted ::: ', totalRecords)
     context.closeWithSuccess()
   } catch (err) {
     console.log(err)
