@@ -3,6 +3,10 @@ const CatalystSDK = require('zcatalyst-sdk-node')
 
 const AppConstants = require('./constants')
 
+const isJsonObject = (object) => {
+  return object && typeof object === 'object'
+}
+
 module.exports = async (event, context) => {
   try {
     const data = event.data
@@ -30,10 +34,15 @@ module.exports = async (event, context) => {
         }
       } else {
         await index.saveObjects(
-          data.map((record) => ({
-            ...record,
-            objectID: record.ROWID
-          }))
+          data.map((record) => {
+            const recordData = isJsonObject(record[tableName]) ? record[tableName] : record
+
+            return ({
+              ...recordData,
+              objectID: recordData.ROWID
+            })
+          }
+          )
         )
       }
 
