@@ -41,4 +41,4 @@ The **algolia_search_record_handler([Event function](https://catalyst.zoho.com/h
 
 **3. [Catalyst Cloud Scale Event Listener](https://catalyst.zoho.com/help/event-listeners.html) :** We will be configuring two rules in the Catalyst Event Listener. Whenever an entry is being made in the cache segment (**Algolia**) one of the pre-configured event rules triggers the **algolia_search_bulk_index_handler** function automatically. You should configure another rule manually to check for any data updates being made in the Data Store table, which in turn invokes the **algolia_search_record_handler** function.
 
-**4. [Catalyst Cloud Scale Cache](https://catalyst.zoho.com/help/cache.html) :** The cache segment(**Algolia**) is used to store the Data Store table data and access them instantly.
+**4. [Catalyst Cloud Scale Cache](https://catalyst.zoho.com/help/cache.html) :** The cache segment(**Algolia**) is used to store the Data Store table metadata for frequent access, and is configured with an event to invoke the corresponding event function.
