@@ -35,7 +35,7 @@ The following Catalyst resources are auto-configured and used as a part of the A
 
 **2. [Catalyst Serverless Functions](https://catalyst.zoho.com/help/functions.html) :** The **algolia_search_integration([Advanced I/O function](https://catalyst.zoho.com/help/advancedio-functions.html))** handles the logic to be executed to while the user performs a search operation **(/search)** in the Catalyst application. Based on the search query entered, Algolia performs the search with the copy of your application's data and returns the response back to your application. It also contains the definitions of two other routes **/bulkIndex** and **/row** that can be used to index bulk data or a single data row respectively.
 
-The **algolia_search_bulk_index_handler([Event function](https://catalyst.zoho.com/help/event-functions.html))** is automatically triggered whenever an entry is made in the cache segment (**Algolia**).function contains the logic to convert the table data to JSON records and push them to Algolia.
+The **algolia_search_bulk_index_handler([Event function](https://catalyst.zoho.com/help/event-functions.html))** is automatically triggered whenever an entry is made in the cache segment (**Algolia**). This function contains the logic to convert the table data to JSON records and push them to Algolia.
 
 The **algolia_search_record_handler([Event function](https://catalyst.zoho.com/help/event-functions.html))** can be configured to execute whenever there is an addition, deletion or updation operation taking place in the Catalyst Data Store. This function handles the logic to maintain a sync between the data in the Data Store and the copy of data stored in the Algolia servers.
 
