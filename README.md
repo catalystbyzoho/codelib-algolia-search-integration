@@ -31,7 +31,7 @@ In cases when you need to send only a single row and not the entire table data t
 
 The following Catalyst resources are auto-configured and used as a part of the Algolia Search Integration CodeLib.
 
-**1. [Catalyst Cloud Scale Data Store](https://catalyst.zoho.com/help/data-store.html)** : Catalyst Data Store table stores the application data which is to be sent to Algolia, to make it searchable. You can perform search in Algolia by passing the name of that table in the request payload while invoking the endpoints configured in the **algolia_search_integration** function.
+**1. [Catalyst Cloud Scale Data Store](https://catalyst.zoho.com/help/data-store.html)** : Catalyst Data Store table stores the application data which is to be sent to Algolia, to make it searchable. You can perform search a in Algolia by passing the name of that table in the request payload while invoking the endpoints configured in the **algolia_search_integration** function.
 
 **2. [Catalyst Serverless Functions](https://catalyst.zoho.com/help/functions.html) :** The **algolia_search_integration([Advanced I/O function](https://catalyst.zoho.com/help/advancedio-functions.html))** handles the logic to be executed to while the user performs a search operation **(/search)** in the Catalyst application. Based on the search query entered, Algolia performs the search with the copy of your application's data and returns the response back to your application. It also contains the definitions of two other routes **/bulkIndex** and **/row** that can be used to index bulk data or a single data row respectively.
 
