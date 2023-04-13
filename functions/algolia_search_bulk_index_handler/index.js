@@ -15,8 +15,8 @@ module.exports = async (event, context) => {
       .getSegmentDetails(AppConstants.CatalystComponents.Segment.Algolia)
 
     const algoliaAppId = process.env[AppConstants.Env.AlgoliaAppId]
-    const algoliaAppKey = process.env[AppConstants.Env.AlgoliaAppKey]
-    const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaAppKey)
+    const algoliaApiKey = process.env[AppConstants.Env.AlgoliaApiKey]
+    const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaApiKey)
 
     const { tableName, totalRecords } = JSON.parse(data.cache_value)
 

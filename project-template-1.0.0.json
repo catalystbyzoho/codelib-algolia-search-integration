@@ -16,7 +16,7 @@
 						"environment": {
 							"variables": {
 								"ALGOLIA_APP_ID": "Your Algolia App Id",
-								"ALGOLIA_APP_KEY": "Your Algolia App Key"
+								"ALGOLIA_API_KEY": "Your Algolia App Key"
 							},
 							"last_updated_time": 1678432222168
 						},
@@ -39,7 +39,7 @@
 						"environment": {
 							"variables": {
 								"ALGOLIA_APP_ID": "Your Algolia App Id",
-								"ALGOLIA_APP_KEY": "Your Algolia App Key"
+								"ALGOLIA_API_KEY": "Your Algolia App Key"
 							},
 							"last_updated_time": 1678432222168
 						},
@@ -62,7 +62,7 @@
 						"environment": {
 							"variables": {
 								"ALGOLIA_APP_ID": "Your Algolia App Id",
-								"ALGOLIA_APP_KEY": "Your Algolia App Key",
+								"ALGOLIA_API_KEY": "Your Algolia App Key",
 								"CODELIB_SECRET_KEY": "CODELIB_FAKE_KEY"
 							},
 							"last_updated_time": 1678432264576

@@ -17,8 +17,8 @@ module.exports = async (event, context) => {
 
     if (source === 'Datastore') {
       const algoliaAppId = process.env[AppConstants.Env.AlgoliaAppId]
-      const algoliaAppKey = process.env[AppConstants.Env.AlgoliaAppKey]
-      const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaAppKey)
+      const algoliaApiKey = process.env[AppConstants.Env.AlgoliaApiKey]
+      const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaApiKey)
       const { table_name: tableName } = await catalyst
         .datastore()
         .getTableDetails(tableId)

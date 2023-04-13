@@ -5,7 +5,7 @@ class AppConstants {
 
   static Env = {
     AlgoliaAppId: 'ALGOLIA_APP_ID',
-    AlgoliaAppKey: 'ALGOLIA_APP_KEY',
+    AlgoliaApiKey: 'ALGOLIA_API_KEY',
     CodelibSecretKey: 'CODELIB_SECRET_KEY'
   }
 

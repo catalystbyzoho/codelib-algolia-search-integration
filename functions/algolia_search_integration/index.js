@@ -41,9 +41,9 @@ app.get('/search', async (req, res) => {
       throw new AppError(400, "'tableName' cannot be empty.")
     }
 
-    const algoliaAppId = process.env.ALGOLIA_APP_ID
-    const algoliaAppKey = process.env.ALGOLIA_APP_KEY
-    const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaAppKey)
+    const algoliaAppId = process.env[AppConstants.Env.AlgoliaAppId]
+    const algoliaApiKey = process.env[AppConstants.Env.AlgoliaApiKey]
+    const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaApiKey)
 
     const index = algoliaInstance.initIndex(tableName)
 
@@ -71,9 +71,9 @@ app.post('/row', async (req, res) => {
       throw new AppError(400, "'tableName' cannot be empty.")
     }
 
-    const algoliaAppId = process.env.ALGOLIA_APP_ID
-    const algoliaAppKey = process.env.ALGOLIA_APP_KEY
-    const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaAppKey)
+    const algoliaAppId = process.env[AppConstants.Env.AlgoliaAppId]
+    const algoliaApiKey = process.env[AppConstants.Env.AlgoliaApiKey]
+    const algoliaInstance = AlgoliaSearch(algoliaAppId, algoliaApiKey)
 
     const catalyst = CatalystSDK.initialize(req)
     const zcql = catalyst.zcql()
