@@ -49,7 +49,7 @@ module.exports = async (event, context) => {
     console.log('Records has been inserted in Algolia. Total records inserted ::: ', totalRecords)
     context.closeWithSuccess()
   } catch (err) {
-    console.log(err)
+    console.log('Error :::', err?.message || err)
     context.closeWithFailure()
   }
 }
